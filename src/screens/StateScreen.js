@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Button } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Button, Alert } from "react-native";
 
 
 const StateScreen = () => {
@@ -22,8 +22,9 @@ const StateScreen = () => {
                     title="Decrease"
                     color="red"
                     onPress={() => {
-                        setValue(value - 1)
-                        console.log('value ; ' + value)
+                        value > 0
+                        ? setValue(value - 1)
+                        : Alert.alert('Warning', 'ไม่สามารถติบลบได้!!')
                     }} />
 
                 <Button
