@@ -1,5 +1,7 @@
 import React from "react"
 import { View, Text, StyleSheet, Button } from "react-native"
+import CustomButton from "../components/CustomButton";
+import Card from "../components/Card";
 
 // function HomeScreen() {} 
 const HomeScreen = ({ navigation }) => {
@@ -18,8 +20,14 @@ const HomeScreen = ({ navigation }) => {
                 <Button
                     title="Go to Modal Demo"
                     onPress={() => { navigation.navigate('Modal') }}
-
+                    color='green'
                 />
+                <CustomButton
+                    title='เรียก Card Screen 🚀'
+                    onPress={() => navigation.navigate("Card")} 
+                    backgroundColor="grey"
+                />
+                <Card title='Card #4' content='This is the card number Four.'/>  
             </View>
         </View>
     );
