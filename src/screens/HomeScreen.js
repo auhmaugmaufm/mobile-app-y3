@@ -27,7 +27,7 @@ const HomeScreen = ({ navigation }) => {
                     onPress={() => navigation.navigate("Card")} 
                     backgroundColor="grey"
                 />
-                <Card title='Card #4' content='This is the card number Four.'/>  
+                <Card image= 'https://staticg.sportskeeda.com/editor/2023/10/7850b-16983059580829-1920.jpg?w=640' title='jenn.ie' content='                     RB0280456'/>  
             </View>
         </View>
     );
