@@ -8,6 +8,8 @@ import StateScreen from "./src/screens/StateScreen";
 import ModalScreen from "./src/screens/ModalScreen";
 import SwipeScreen from "./src/screens/SwipeScreen";
 import CardScreen from "./src/screens/CardScreen";
+import LoadUsers from "./src/screens/LoadUsers";
+
 
 const Stack = createStackNavigator()
 
@@ -18,6 +20,7 @@ const App = () => {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
+          options={{ title: 'Home | List of Screen'}}
         />
         <Stack.Screen
           name="Component"
@@ -47,9 +50,14 @@ const App = () => {
           component={ CardScreen}
           options={{ title: 'Card 🚀'}}
         />
+        <Stack.Screen
+          name="LoadUsers"
+          component={ LoadUsers}
+          options={{ title: 'Users 👻'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )
 }
 
-export default App
+export default App;

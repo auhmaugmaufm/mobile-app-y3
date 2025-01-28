@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     View, TextInput, FlatList, StyleSheet,
 } from "react-native";
@@ -7,7 +7,7 @@ import Card from "../components/Card";
 
 const CardScreen = () => {
 
-    const [heroes, setHero] =  useState([
+    const [heroes, setHero] = useState([
         {
             id: "1",
             title: "SUNSPOT",
@@ -46,17 +46,22 @@ const CardScreen = () => {
     const [content, setContent] = useState("");
     const [image, setImage] = useState("");
 
+    useEffect(() => {
+        console.log('first time - reloaded') // ส่วนที่ให้โค้ดทำงาน
+    }, [content]) // array เปล่า คือ ทำงานครั้งเดียวเมื่อโหลดหน้านี้ , [x] คือ ทำงานเมื่อ x มีการเปลี่ยนแปลง 
+        //  ex. x = content หาก content มีการเปลี่ยนแปลง โค้ดใน useEffect จะทำงาน 
+
     const addCard = () => {
-        if(!title.trim()||!content.trim()||!image.trim()) {
+        if (!title.trim() || !content.trim() || !image.trim()) {
             alert('กรุณากรอกค่า Title และ Content')
             return;
         }
-        const newHero = { id: (heroes.length + 1).toString() , title, content, image }
+        const newHero = { id: (heroes.length + 1).toString(), title, content, image }
         heroes.push(newHero); // เอา Array ใหม่ไปต่อ ตามด้วยของเดิม
         setTitle('')
         setContent('')
         setImage('')
-        
+
         searchHero(key); // รีเฟรชผลการค้นหาหลังจากเพิ่มการ์ด
     }
 

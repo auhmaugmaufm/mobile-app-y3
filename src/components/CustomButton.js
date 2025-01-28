@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center' ,
         borderRadius: 5,
         height: 50,
-        marginBottom: 10
+        marginTop: 2
 
     },
     text: {

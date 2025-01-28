@@ -27,6 +27,11 @@ const HomeScreen = ({ navigation }) => {
                     onPress={() => navigation.navigate("Card")} 
                     backgroundColor="grey"
                 />
+                <CustomButton
+                    title='ซ้อม useEffect 👻'
+                    onPress={() => navigation.navigate("LoadUsers")} 
+                    backgroundColor="#333"
+                />
                 <Card image= 'https://staticg.sportskeeda.com/editor/2023/10/7850b-16983059580829-1920.jpg?w=640' title='jenn.ie' content='                     RB0280456'/>  
             </View>
         </View>
