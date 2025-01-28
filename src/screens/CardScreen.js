@@ -49,7 +49,7 @@ const CardScreen = () => {
     useEffect(() => {
         console.log('first time - reloaded') // ส่วนที่ให้โค้ดทำงาน
     }, [content]) // array เปล่า คือ ทำงานครั้งเดียวเมื่อโหลดหน้านี้ , [x] คือ ทำงานเมื่อ x มีการเปลี่ยนแปลง 
-        //  ex. x = content หาก content มีการเปลี่ยนแปลง โค้ดใน useEffect จะทำงาน 
+    //  ex. x = content หาก content มีการเปลี่ยนแปลง โค้ดใน useEffect จะทำงาน 
 
     const addCard = () => {
         if (!title.trim() || !content.trim() || !image.trim()) {

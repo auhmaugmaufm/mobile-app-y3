@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, FlatList, ActivityIndicator } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const LoadUsers = () => {
     const [users, setUsers] = useState([]);
@@ -29,8 +30,8 @@ const LoadUsers = () => {
 
             {loading ? (
                 <View>
-                    
-                    <Text style={[styles.text]}>Load Users ... </Text><ActivityIndicator size='large' color='#0000ff' />
+                    <Text style={[styles.text]}>Load Users ... </Text>
+                    <ActivityIndicator size='large' color='#0000ff' />
                 </View>
             ) :
                 <FlatList

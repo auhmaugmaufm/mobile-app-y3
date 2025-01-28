@@ -9,7 +9,7 @@ import ModalScreen from "./src/screens/ModalScreen";
 import SwipeScreen from "./src/screens/SwipeScreen";
 import CardScreen from "./src/screens/CardScreen";
 import LoadUsers from "./src/screens/LoadUsers";
-
+import CardScreenv1 from "./src/screens/CardScreenv1";
 
 const Stack = createStackNavigator()
 
@@ -46,10 +46,16 @@ const App = () => {
           options={{ title: 'Swipe'}}
         />
         <Stack.Screen
+          name="Cardv1"
+          component={ CardScreenv1}
+          options={{ title: 'Card v1'}}
+        />
+        <Stack.Screen
           name="Card"
           component={ CardScreen}
           options={{ title: 'Card 🚀'}}
         />
+
         <Stack.Screen
           name="LoadUsers"
           component={ LoadUsers}

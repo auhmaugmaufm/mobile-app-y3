@@ -23,6 +23,11 @@ const HomeScreen = ({ navigation }) => {
                     color='green'
                 />
                 <CustomButton
+                    title='เรียก Card Screen v1'
+                    onPress={() => navigation.navigate("Cardv1")} 
+                    backgroundColor="grey"
+                />
+                <CustomButton
                     title='เรียก Card Screen 🚀'
                     onPress={() => navigation.navigate("Card")} 
                     backgroundColor="grey"

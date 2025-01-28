@@ -1,29 +1,55 @@
 {/*
-    - ไม่ได้เรียกใช้ในหน้า HomeScreen    
+    - ไม่ได้เรียกใช้ในหน้า HomeScreen -- > 28/1 เรียกฝช้แล้ว   
     - Card Style จะประหลาด เพราะ components/Card เป็นเวอร์ชั่นที่มีรูป (Hero)
 */}
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ScrollView, View, Text, StyleSheet, TextInput, TouchableOpacity, FlatList } from "react-native";
-import Card from '../components/Card'
+import Cardv1 from '../components/Cardv1'
 import CustomButton from "../components/CustomButton";
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+const STORAGE_KEY = '@card_data'
 
 const CardScreenv1 = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [cards, setCards] = useState([]);
 
-    const addCard = () => {
+    const addCard = async () => {
         if(!title.trim()||!content.trim()) {
             alert('กรุณากรอกค่า Title และ Content')
             return;
         }
         const newCard = { id: Date.now().toString(), title, content }
-        setCards((preCards) => [newCard, ...preCards]) // เอา Array ใหม่ไปต่อ ตามด้วยของเดิม
+        const updateCard = [newCard, ...cards]
+        setCards(updateCard) 
         setTitle('')
         setContent('')
+
+        try {
+            await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(updateCard))
+        } catch (error) {
+            console.log('Error: ', error)
+        }
+
     }
+
+    const loadCard = async () => {
+        try {
+            const storedCards = await AsyncStorage.getItem(STORAGE_KEY)
+            console.log(storedCards)
+            setCards(JSON.parse(storedCards))
+        } catch (error) {
+            console.log('Failed to load: ', error)
+        }
+    }
+
+    useEffect(() => {
+        loadCard() // ส่วนที่ให้โค้ดทำงาน
+    }, [])
+
 
     return (
         <View style={styles.container}>
@@ -48,7 +74,7 @@ const CardScreenv1 = () => {
                 data={cards}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => {
-                    return <Card title={item.title} content={item.content} />
+                    return <Cardv1 title={item.title} content={item.content} />
                 }}
                 contentContainerStyle={styles.cardList}
             />
