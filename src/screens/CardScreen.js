@@ -87,7 +87,7 @@ const CardScreen = () => {
                 backgroundColor='pink'
                 onPress={addCard} />
             <TextInput
-                style={styles.input}
+                style={[styles.input,{marginTop: 15}]}
                 placeholder="Search by Name"
                 value={key}
                 onChangeText={searchHero}

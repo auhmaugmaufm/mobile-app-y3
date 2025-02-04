@@ -37,6 +37,16 @@ const HomeScreen = ({ navigation }) => {
                     onPress={() => navigation.navigate("LoadUsers")} 
                     backgroundColor="#333"
                 />
+                <CustomButton
+                    title='State Screen 🤣'
+                    onPress={() => navigation.navigate("State")} 
+                    backgroundColor="pink"
+                />
+                <CustomButton
+                    title='Register Form 😣'
+                    onPress={() => navigation.navigate("Regis")} 
+                    backgroundColor="pink"
+                />
                 <Card image= 'https://staticg.sportskeeda.com/editor/2023/10/7850b-16983059580829-1920.jpg?w=640' title='jenn.ie' content='                     RB0280456'/>  
             </View>
         </View>

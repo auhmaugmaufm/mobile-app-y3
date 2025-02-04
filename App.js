@@ -10,6 +10,7 @@ import SwipeScreen from "./src/screens/SwipeScreen";
 import CardScreen from "./src/screens/CardScreen";
 import LoadUsers from "./src/screens/LoadUsers";
 import CardScreenv1 from "./src/screens/CardScreenv1";
+import RegisForm from "./src/screens/RegisForm";
 
 const Stack = createStackNavigator()
 
@@ -55,11 +56,15 @@ const App = () => {
           component={ CardScreen}
           options={{ title: 'Card 🚀'}}
         />
-
         <Stack.Screen
           name="LoadUsers"
           component={ LoadUsers}
           options={{ title: 'Users 👻'}}
+        />
+        <Stack.Screen
+          name="Regis"
+          component={ RegisForm}
+          options={{ title: 'Regis Form 👻'}}
         />
       </Stack.Navigator>
     </NavigationContainer>

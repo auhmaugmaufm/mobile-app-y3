@@ -1,39 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Button, Alert } from "react-native";
 
+const initialState = { count: 0 }
+
+const reducer = (state, action) => {
+    switch (action.type) {
+        case "INCREMENT":
+            return { count: state.count + 1  }
+        case "DECREMENT":
+            return { count: state.count - 1  }
+        case "RESET":
+            return { count: 0 }
+        default:
+            return state;
+    }
+}
 
 const StateScreen = () => {
-    const [value, setValue] = useState(0)
+    //const [value, setValue] = useState(0)
+    const [state, dispatch] = useReducer(reducer, initialState)
+
+
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>{value}</Text>
+            <Text style={styles.text}>{state.count}</Text>
             <View style={styles.button}>
                 <Button
                     title="Increase"
                     color="green"
-                    onPress={() => {
-                        // value++
-                        setValue(value + 1)
-                        console.log('value : ' + value)
-                    }}
+                    onPress={() => dispatch({ type: "INCREMENT" })}
                 />
                 <Button
                     title="Decrease"
                     color="red"
                     onPress={() => {
-                        value > 0
-                        ? setValue(value - 1)
-                        : Alert.alert('Warning', 'ไม่สามารถติบลบได้!!')
+                        {state.count > 0 ? dispatch({ type: "DECREMENT"}) : Alert.alert('Warning', 'ไม่สามารถติบลบได้!!') }
                     }} />
 
                 <Button
                     title="Reset"
                     color="grey"
-                    onPress={() => {
-                        setValue(0)
-                        console.log('value ; ' + value)
-                    }} />
+                    onPress={() => dispatch({ type: "RESET" })} />
             </View>
         </View>
     )
